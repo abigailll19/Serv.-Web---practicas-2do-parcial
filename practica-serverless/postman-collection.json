@@ -1,0 +1,412 @@
+{
+  "info": {
+    "name": "Sistema Microservicios - Usuarios y Reseñas",
+    "_postman_id": "microservicios-system",
+    "description": "Colección completa para probar el sistema de gestión de usuarios y reseñas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "0️⃣ Health Checks",
+      "item": [
+        {
+          "name": "Gateway Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Usuario Service Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Resena Service Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3002",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3002"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "1️⃣ Usuarios",
+      "item": [
+        {
+          "name": "Crear Usuario Premium",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Juan Pérez\",\n  \"correo\": \"juan@example.com\",\n  \"tipo\": \"premium\",\n  \"idioma_preferido\": \"es\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/usuarios",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["usuarios"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear Usuario Estándar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"María García\",\n  \"correo\": \"maria@example.com\",\n  \"tipo\": \"estándar\",\n  \"idioma_preferido\": \"es\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/usuarios",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["usuarios"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear Usuario Inglés",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"John Smith\",\n  \"correo\": \"john@example.com\",\n  \"tipo\": \"premium\",\n  \"idioma_preferido\": \"en\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/usuarios",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["usuarios"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Todos los Usuarios",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/usuarios",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["usuarios"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "2️⃣ Reseñas",
+      "item": [
+        {
+          "name": "Reseña Excelente (5 estrellas)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario_id\": 1,\n  \"destino\": \"Hotel Paradise Resort\",\n  \"mensaje\": \"Experiencia increíble. El personal fue muy amable, las instalaciones impecables y la comida deliciosa. Sin duda volveré.\",\n  \"calificacion\": 5\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/resenas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["resenas"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reseña Buena (4 estrellas)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario_id\": 1,\n  \"destino\": \"Restaurante La Bella Italia\",\n  \"mensaje\": \"Muy buena comida italiana, ambiente agradable. Solo mejoraría el tiempo de espera.\",\n  \"calificacion\": 4\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/resenas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["resenas"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reseña Regular (3 estrellas)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario_id\": 2,\n  \"destino\": \"Café Central\",\n  \"mensaje\": \"El café es aceptable pero nada excepcional. Precios un poco elevados para lo que ofrecen.\",\n  \"calificacion\": 3\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/resenas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["resenas"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reseña Mala (2 estrellas) - LOW RATING",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario_id\": 1,\n  \"destino\": \"Hotel Plaza Centro\",\n  \"mensaje\": \"Decepcionante. Las habitaciones no estaban limpias, el aire acondicionado no funcionaba y el servicio fue pésimo.\",\n  \"calificacion\": 2\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/resenas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["resenas"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reseña Pésima (1 estrella) - LOW RATING",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario_id\": 3,\n  \"destino\": \"Restaurante Mar y Tierra\",\n  \"mensaje\": \"Horrible experiencia. La comida estaba fría, el servicio demoró más de una hora, y encima nos cobraron de más. Nunca más.\",\n  \"calificacion\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/resenas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["resenas"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "3️⃣ Pruebas de Idempotencia",
+      "item": [
+        {
+          "name": "Reseña con Idempotency-Key (Primera vez)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Idempotency-Key",
+                "value": "test-key-12345"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario_id\": 1,\n  \"destino\": \"Parque Nacional\",\n  \"mensaje\": \"Hermosos paisajes y excelente para hacer senderismo.\",\n  \"calificacion\": 5\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/resenas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["resenas"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reseña con MISMA Idempotency-Key (Duplicado)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Idempotency-Key",
+                "value": "test-key-12345"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario_id\": 1,\n  \"destino\": \"Parque Nacional\",\n  \"mensaje\": \"Hermosos paisajes y excelente para hacer senderismo.\",\n  \"calificacion\": 5\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/resenas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["resenas"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "4️⃣ Casos Edge",
+      "item": [
+        {
+          "name": "Usuario con correo inválido",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Test Error\",\n  \"correo\": \"correo-invalido\",\n  \"tipo\": \"premium\",\n  \"idioma_preferido\": \"es\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/usuarios",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["usuarios"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reseña con usuario inexistente",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario_id\": 99999,\n  \"destino\": \"Lugar Test\",\n  \"mensaje\": \"Este usuario no existe\",\n  \"calificacion\": 5\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/resenas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["resenas"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reseña con calificación inválida",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario_id\": 1,\n  \"destino\": \"Hotel Test\",\n  \"mensaje\": \"Calificación fuera de rango\",\n  \"calificacion\": 10\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/resenas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["resenas"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
