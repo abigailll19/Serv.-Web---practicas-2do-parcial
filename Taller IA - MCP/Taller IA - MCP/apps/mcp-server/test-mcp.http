@@ -1,0 +1,89 @@
+### Test MCP Server
+
+### 1. Listar tools disponibles
+GET http://localhost:3001/tools
+
+### 2. Health check
+GET http://localhost:3001/health
+
+### 3. Tool 1: Buscar usuario (Búsqueda)
+POST http://localhost:3001/mcp
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "buscar_usuario",
+  "params": {
+    "correo": "juan@example.com"
+  }
+}
+
+### 4. Tool 2: Validar reseña (Validación de reglas)
+POST http://localhost:3001/mcp
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "method": "validar_resena",
+  "params": {
+    "usuario_id": "550e8400-e29b-41d4-a716-446655440000",
+    "calificacion": 5,
+    "mensaje": "Excelente lugar para visitar en familia"
+  }
+}
+
+### 5. Tool 2b: Validar reseña con datos inválidos
+POST http://localhost:3001/mcp
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "method": "validar_resena",
+  "params": {
+    "usuario_id": "123",
+    "calificacion": 10,
+    "mensaje": "Corto"
+  }
+}
+
+### 6. Tool 3: Crear reseña (Acción transaccional)
+POST http://localhost:3001/mcp
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 4,
+  "method": "crear_resena",
+  "params": {
+    "autor": "Juan Pérez",
+    "destino": "Playa de Manta",
+    "mensaje": "Hermoso lugar con excelente clima y playas limpias",
+    "calificacion": 5,
+    "usuario_id": "550e8400-e29b-41d4-a716-446655440000"
+  }
+}
+
+### 7. Error: Method not found
+POST http://localhost:3001/mcp
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 5,
+  "method": "tool_inexistente",
+  "params": {}
+}
+
+### 8. Error: Invalid JSON-RPC
+POST http://localhost:3001/mcp
+Content-Type: application/json
+
+{
+  "jsonrpc": "1.0",
+  "id": 6,
+  "method": "buscar_usuario",
+  "params": {}
+}
