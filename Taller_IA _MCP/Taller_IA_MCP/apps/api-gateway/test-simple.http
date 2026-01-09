@@ -1,5 +1,0 @@
-### Test simple API Gateway
-POST http://localhost:3002/chat
-Content-Type: application/json
-
-{"mensaje": "Hola"}
