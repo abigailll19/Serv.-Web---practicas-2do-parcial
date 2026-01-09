@@ -1,0 +1,65 @@
+### Test API Gateway + Gemini
+
+### 1. Mensaje simple (sin tools)
+POST http://localhost:3002/chat
+Content-Type: application/json
+
+{
+  "mensaje": "Hola, ¿cómo estás?"
+}
+
+### 2. Buscar usuario (Tool 1: buscar_usuario)
+POST http://localhost:3002/chat
+Content-Type: application/json
+
+{
+  "mensaje": "Busca el usuario con correo juan@example.com"
+}
+
+### 3. Validar reseña (Tool 2: validar_resena)
+POST http://localhost:3002/chat
+Content-Type: application/json
+
+{
+  "mensaje": "Valida una reseña con calificación 5 y mensaje 'Excelente lugar para visitar' para el usuario 550e8400-e29b-41d4-a716-446655440000"
+}
+
+### 4. Validar reseña inválida
+POST http://localhost:3002/chat
+Content-Type: application/json
+
+{
+  "mensaje": "Valida una reseña con calificación 15 y mensaje 'ok' para el usuario 123"
+}
+
+### 5. Crear reseña (Tool 3: crear_resena)
+POST http://localhost:3002/chat
+Content-Type: application/json
+
+{
+  "mensaje": "Crea una reseña de 'Playa de Manta' con calificación 5, autor 'Juan Pérez', mensaje 'Hermoso lugar con excelente clima' para el usuario 550e8400-e29b-41d4-a716-446655440000"
+}
+
+### 6. Conversación natural
+POST http://localhost:3002/chat
+Content-Type: application/json
+
+{
+  "mensaje": "¿Qué puedes hacer?"
+}
+
+### 7. Pregunta sobre el sistema
+POST http://localhost:3002/chat
+Content-Type: application/json
+
+{
+  "mensaje": "¿Puedo buscar usuarios por nombre?"
+}
+
+### 8. Operación compleja (múltiples pasos)
+POST http://localhost:3002/chat
+Content-Type: application/json
+
+{
+  "mensaje": "Primero busca el usuario admin@sistema.com y luego valida que pueda crear una reseña con calificación 5"
+}
